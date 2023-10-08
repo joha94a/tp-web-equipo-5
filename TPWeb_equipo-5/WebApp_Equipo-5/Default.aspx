@@ -35,11 +35,15 @@
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
+
                         
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                            <a href="Carrito.aspx?id=<%#Eval("Id") %>" class="btn btn-primary">Ver detalle</a>
+                            <a href="Detalles.aspx?id=<%#Eval("Id") %>" class="btn btn-primary" onclick="">Ver detalle</a>
+                            <ItemTemplate>
+                               
+                            </ItemTemplate>
                             <%--<asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar" CommandArgument='<%#Eval("Id")%>' CommandName="IdArticulo" OnClick="btnAgregarCarrito_Click" />--%>
                         </div>
                     </div>
@@ -47,4 +51,5 @@
             </ItemTemplate>
         </asp:Repeater>
     </div>
+
 </asp:Content>

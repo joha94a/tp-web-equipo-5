@@ -363,5 +363,64 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public Articulo obtenerArticulo(int id)
+        {
+
+            Articulo articulo = new Articulo();
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Id IdMarca, M.Descripcion marca, C.Id IdCategoria, C.Descripcion categoria FROM ARTICULOS A LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE A.Id = @Id;");
+                accesoDatos.setearParametro("Id", id);
+                accesoDatos.ejecutarLectura();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    ImagenNegocio negocioImagenes = new ImagenNegocio();
+                    aux.Id = (int)accesoDatos.Lector["Id"];
+                    if (!(accesoDatos.Lector["codigo"] is DBNull))
+                        aux.Codigo = (string)accesoDatos.Lector["codigo"];
+                    if (!(accesoDatos.Lector["nombre"] is DBNull))
+                        aux.Nombre = (string)accesoDatos.Lector["nombre"];
+                    if (!(accesoDatos.Lector["descripcion"] is DBNull))
+                        aux.Descripcion = (string)accesoDatos.Lector["descripcion"];
+                    if (!(accesoDatos.Lector["precio"] is DBNull))
+                        aux.Precio = (decimal)accesoDatos.Lector["precio"];
+
+                    if (!(accesoDatos.Lector["IdMarca"] is DBNull))
+                    {
+                        aux.Marca = new Marca();
+                        aux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
+                        if (!(accesoDatos.Lector["marca"] is DBNull))
+                            aux.Marca.Descripcion = (string)accesoDatos.Lector["marca"];
+                    }
+                    if (!(accesoDatos.Lector["IdCategoria"] is DBNull))
+                    {
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
+                        if (!(accesoDatos.Lector["categoria"] is DBNull))
+                            aux.Categoria.Descripcion = (string)accesoDatos.Lector["categoria"];
+                    }
+
+                    aux.Imagenes = negocioImagenes.listar(aux.Id);
+
+                    articulo = aux;
+                }
+
+                return articulo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
     }
 }

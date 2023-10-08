@@ -11,16 +11,16 @@ namespace WebApp_Equipo_5
 {
 
 
-    public partial class Home
+    public partial class WebForm1
     {
 
         /// <summary>
-        /// Control repRepetidorArticulos.
+        /// Control RepImagenes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repRepetidorArticulos;
+        protected global::System.Web.UI.WebControls.Repeater RepImagenes;
     }
 }
