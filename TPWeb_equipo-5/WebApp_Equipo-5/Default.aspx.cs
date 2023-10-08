@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,6 +17,21 @@ namespace WebApp_Equipo_5
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulos = negocio.listarArticulos();
+            if (!IsPostBack)
+            {
+                repRepetidorArticulos.DataSource = ListaArticulos;
+                repRepetidorArticulos.DataBind();
+            }
         }
+        
+        protected void repImagenes_DataBinding(object sender, EventArgs e)
+        {
+            Repeater rep = (Repeater)sender;
+            var art = (RepeaterItem)rep.NamingContainer;
+            int artIndex = art.ItemIndex;
+
+            rep.DataSource = ListaArticulos[artIndex].Imagenes;
+        }
+        
     }
 }
