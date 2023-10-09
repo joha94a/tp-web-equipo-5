@@ -15,6 +15,11 @@ namespace Dominio
             Items = new List<ItemCarrito>();
         }
 
+        public List<ItemCarrito> ListarItems()
+        {
+            return Items;
+        }
+
         public void AgregarArticulo(Articulo articulo, int cantidad)
         {
             ItemCarrito item = Items.FirstOrDefault(i => i.Articulo.Id == articulo.Id);

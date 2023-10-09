@@ -11,7 +11,15 @@ namespace WebApp_Equipo_5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Dominio.Carrito carrito;
+            if (Session["Carrito"] != null)
+                carrito = Session["Carrito"] as Dominio.Carrito;
+            else
+                carrito= new Dominio.Carrito();
 
+            repCarrito.DataSource = carrito.ListarItems();
+            repCarrito.DataBind();
+            
         }
     }
 }
