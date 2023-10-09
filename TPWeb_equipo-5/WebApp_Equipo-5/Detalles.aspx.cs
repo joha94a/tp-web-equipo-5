@@ -17,12 +17,9 @@ namespace WebApp_Equipo_5
             ArticuloNegocio negocio = new ArticuloNegocio();
             int articuloId = -1;
 
-            if (!IsPostBack)
+            if (Request.QueryString["Id"] != null)
             {
-                if (Request.QueryString["Id"] != null)
-                {
-                    articuloId = Convert.ToInt32(Request.QueryString["Id"]);
-                }
+                articuloId = Convert.ToInt32(Request.QueryString["Id"]);
             }
            
             articuloSeleccionado = negocio.obtenerArticulo(articuloId);
@@ -31,6 +28,11 @@ namespace WebApp_Equipo_5
             RepImagenes.DataBind();
         }
 
-        
+        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
+        {
+            Dominio.Carrito carrito = Session["Carrito"] as Dominio.Carrito;
+            carrito.AgregarArticulo(articuloSeleccionado, 1);
+            Response.Redirect("Carrito.aspx",false);
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    
+
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/Style.css" rel="stylesheet" />
 
@@ -25,14 +25,27 @@
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
+
+                    <%--<form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
+                    </form>--%>
+
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
+                            <div>
+                                <asp:Button ID="btnCarrito" runat="server" Text="Carrito" CssClass="btn btn-primary position-relative" OnClick="btnCarrito_Click" />
+                                <span class="start-100 translate-middle badge rounded-pill bg-danger"><%: this.Carrito.CantidadItems().ToString() %>
+                                    <span class="visually-hidden">cantidad de articulos</span>
+                                </span>
+                            </div>
+                        </li>
+                        <%--<li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Carrito.aspx">Carrito</a>
                         </li>
+                        <li class="nav-item">
+                            <asp:Label ID="lblCantidadItems" runat="server" Text="" CssClass="nav-link active"></asp:Label>
+                        </li>--%>
                     </ul>
                 </div>
             </div>

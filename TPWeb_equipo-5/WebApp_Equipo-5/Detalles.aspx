@@ -46,7 +46,8 @@
                         <p class="card-text"><%: articuloSeleccionado.Descripcion  %></p>
                         <h5>Precio:</h5>
                         <p class="card-text"><%: articuloSeleccionado.Precio %></p>
-                        <a href="#" class="btn btn-primary" onclick="">Agregar</a>
+                        <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar" CssClass="btn btn-primary" OnClick="btnAgregarCarrito_Click" />
+                        <%--<a href="#" class="btn btn-primary" onclick="">Agregar</a>--%>
                         <a href="Carrito.aspx" class="btn btn-primary" onclick="">Ver carrito</a>
                         <a href="Default.aspx" class="btn btn-primary" onclick="">Volver</a>
 
