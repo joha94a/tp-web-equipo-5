@@ -11,7 +11,8 @@ namespace WebApp_Equipo_5
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        public Articulo articuloSeleccionado { get; set; }
+        public Articulo articulo { get; set; }
+        public List<Imagen> Imagenes { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -21,17 +22,16 @@ namespace WebApp_Equipo_5
             {
                 articuloId = Convert.ToInt32(Request.QueryString["Id"]);
             }
-           
-            articuloSeleccionado = negocio.obtenerArticulo(articuloId);
 
-            RepImagenes.DataSource = articuloSeleccionado.Imagenes;
-            RepImagenes.DataBind();
+            articulo = negocio.obtenerArticulo(articuloId);
+
+            Imagenes = articulo.Imagenes;
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
             Dominio.Carrito carrito = Session["Carrito"] as Dominio.Carrito;
-            carrito.AgregarArticulo(articuloSeleccionado, 1);
+            carrito.AgregarArticulo(articulo, 1);
             Response.Redirect("Carrito.aspx",false);
         }
     }

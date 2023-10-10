@@ -40,7 +40,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                            <a href="Detalles.aspx?id=<%#Eval("Id") %>" class="btn btn-primary" onclick="">Ver detalle</a>
+                            <a href="Detalles.aspx?id=<%#Eval("Id") %>" class="btn btn-primary" onclick="">Ver</a>
                             <ItemTemplate>
                                
                             </ItemTemplate>
