@@ -17,5 +17,12 @@ namespace Dominio
         public decimal Precio { get; set; }
         public List<Imagen> Imagenes { get; set; }
 
+        public string PrecioStr
+        {
+            get
+            {
+                return Precio.ToString("0.00");
+            }
+        }
     }
 }

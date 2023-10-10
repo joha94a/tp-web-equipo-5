@@ -29,6 +29,8 @@
     height: 500px;
     border: 1px solid black;
     border-radius: 20px;
+    display:flex;
+    align-items: center;
 }
 
 .detalleContainer #carouselExample.carousel.slide img {
@@ -42,5 +44,21 @@
 .detalleContainer #carouselExample.carousel.slide button:hover{
     color: red;
     background-color: #b4b4cd !important;
+    opacity: 50%;
+}
+
+.detalleContainer #carouselExample.carousel.slide button.carousel-control-prev:hover {
+    border-radius: 20px 0 0 20px;
+}
+.detalleContainer #carouselExample.carousel.slide button.carousel-control-next:hover {
+    border-radius: 0 20px 20px 0;
+}
+
+.secondaryButton {
+    background-color: #fff;
+    color: #0a58ca;
+    border: 1px solid #0a58ca;
+}
+.secondaryButton:hover {
     opacity: 50%;
 }

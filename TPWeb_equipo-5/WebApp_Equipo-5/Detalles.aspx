@@ -34,11 +34,11 @@
         <div class="detalleContainer_columnRight">
             <h2><%:articulo.Nombre%></h2>
             <p><%:articulo.Descripcion%></p>
-            <h3><%:articulo.Precio%></h3>
+            <h3>$ <%:articulo.Precio.ToString("0.00")%></h3>
 
             
             <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar" CssClass="btn btn-primary" OnClick="btnAgregarCarrito_Click" />
-            <a href="Default.aspx" class="btn btn-primary" onclick="">Volver</a>
+            <a href="Default.aspx" class="btn secondaryButton" onclick="">Volver</a>
         </div>
     </div>
     <%--</div>--%>

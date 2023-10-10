@@ -13,10 +13,10 @@
                     </div>
                     <div class="col">
                         <asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
-                        <asp:Label ID="lblPrecio" runat="server" Text='<%# " x $ " + Eval("Articulo.Precio") %>'></asp:Label>
+                        <asp:Label ID="lblPrecio" runat="server" Text='<%# " x $ " + Eval("Articulo.PrecioStr") %>'></asp:Label>
                     </div>
                     <div class="col">
-                        <asp:Label ID="lblTotal" runat="server" Text='<%# "$ " + ((decimal)Eval("Articulo.Precio") * (int)Eval("Cantidad")).ToString() %>'></asp:Label>
+                        <asp:Label ID="lblTotal" runat="server" Text='<%# "$ " + ((decimal)Eval("Articulo.Precio") * (int)Eval("Cantidad")).ToString("0.00") %>'></asp:Label>
                     </div>
                     <div class="col">
                         <asp:LinkButton ID="lknEliminar" runat="server">Borrar</asp:LinkButton>
