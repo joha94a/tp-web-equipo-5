@@ -34,6 +34,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <div>
+                                <i class="bi bi-cart"></i>
                                 <asp:Button ID="btnCarrito" runat="server" Text="Carrito" CssClass="btn btn-primary position-relative" OnClick="btnCarrito_Click" />
                                 <span class="start-100 translate-middle badge rounded-pill bg-danger"><%: this.Carrito.CantidadItems().ToString() %>
                                     <span class="visually-hidden">cantidad de articulos</span>

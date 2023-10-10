@@ -20,6 +20,8 @@ namespace WebApp_Equipo_5
             repCarrito.DataSource = carrito.ListarItems();
             repCarrito.DataBind();
             
+            LabelPrecio.Text = carrito.PrecioTotal().ToString();
+
         }
     }
 }

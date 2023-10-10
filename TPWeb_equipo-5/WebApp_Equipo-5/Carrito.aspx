@@ -23,8 +23,16 @@
                     </div>
                 </div>
             </div>
+
             
             
         </ItemTemplate>
     </asp:Repeater>
+
+
+    <div class="divTotal">
+    <h3>Total:</h3> 
+    <asp:Label ID="LabelPrecio" runat="server" Text=""></asp:Label>
+
+    </div>
 </asp:Content>

@@ -1,3 +1,18 @@
 ﻿#masterForm .navbar.navbar-expand-lg.bg-body-tertiary{
     padding: 8px 300px !important;
 }
+
+.divTotal 
+{
+    position: fixed;
+    bottom: 20px;
+}
+
+.divTotal #LabelPrecio {
+        display: inline;
+        font-size: 35px;
+        font-weight:bold;
+}
+.divTotal h3 {
+        display: inline;
+}
