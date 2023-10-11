@@ -25,5 +25,14 @@ namespace WebApp_Equipo_5
         {
             Response.Redirect("Carrito.aspx", false);
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscar.Text;
+            if(!string.IsNullOrEmpty(busqueda))
+            {
+                Response.Redirect("Default.aspx?busqueda=" + busqueda, false);
+            }
+        }
     }
 }

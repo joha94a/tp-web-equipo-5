@@ -15,8 +15,18 @@ namespace WebApp_Equipo_5
         public List<Articulo> ListaArticulos { get; set; }       
         protected void Page_Load(object sender, EventArgs e)
         {
+            string busqueda = Request.QueryString["busqueda"];
+
             ArticuloNegocio negocio = new ArticuloNegocio();
-            ListaArticulos = negocio.listarArticulos();
+            if (!IsPostBack && !string.IsNullOrEmpty(busqueda))
+            {
+                ListaArticulos = negocio.listarArticulosFiltrado(busqueda);
+            }
+            else
+            {
+                ListaArticulos = negocio.listarArticulos();
+            }
+
             if (!IsPostBack)
             {
                 repRepetidorArticulos.DataSource = ListaArticulos;

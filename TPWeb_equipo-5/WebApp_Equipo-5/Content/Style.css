@@ -62,3 +62,13 @@
 .secondaryButton:hover {
     opacity: 50%;
 }
+
+#masterForm ul.navbar-nav.me-auto.mb-2.mb-lg-0 {
+    margin-left: 35px;
+}
+
+
+#masterForm ul.navbar-nav.me-auto.mb-2.mb-lg-0 li div{
+    align-items: center;
+    display: flex;
+}

@@ -69,6 +69,63 @@ namespace Negocio
             
         }
 
+        public List<Articulo> listarArticulosFiltrado(string busqueda)
+        {
+            List<Articulo> articulos = new List<Articulo>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Id IdMarca, M.Descripcion marca, C.Id IdCategoria, C.Descripcion categoria FROM ARTICULOS A LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE A.Nombre like '%'+'"+busqueda+ "'+'%' OR A.Descripcion like '%'+'" + busqueda + "'+'%' OR M.Descripcion like '%'+'" + busqueda + "'+'%' OR C.Descripcion like '%'+'" + busqueda + "'+'%'");
+                accesoDatos.ejecutarLectura();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    ImagenNegocio negocioImagenes = new ImagenNegocio();
+                    aux.Id = (int)accesoDatos.Lector["Id"];
+                    if (!(accesoDatos.Lector["codigo"] is DBNull))
+                        aux.Codigo = (string)accesoDatos.Lector["codigo"];
+                    if (!(accesoDatos.Lector["nombre"] is DBNull))
+                        aux.Nombre = (string)accesoDatos.Lector["nombre"];
+                    if (!(accesoDatos.Lector["descripcion"] is DBNull))
+                        aux.Descripcion = (string)accesoDatos.Lector["descripcion"];
+                    if (!(accesoDatos.Lector["precio"] is DBNull))
+                        aux.Precio = (decimal)accesoDatos.Lector["precio"];
+
+                    if (!(accesoDatos.Lector["IdMarca"] is DBNull))
+                    {
+                        aux.Marca = new Marca();
+                        aux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
+                        if (!(accesoDatos.Lector["marca"] is DBNull))
+                            aux.Marca.Descripcion = (string)accesoDatos.Lector["marca"];
+                    }
+                    if (!(accesoDatos.Lector["IdCategoria"] is DBNull))
+                    {
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
+                        if (!(accesoDatos.Lector["categoria"] is DBNull))
+                            aux.Categoria.Descripcion = (string)accesoDatos.Lector["categoria"];
+                    }
+
+                    aux.Imagenes = negocioImagenes.listar(aux.Id);
+
+                    articulos.Add(aux);
+                }
+
+                return articulos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
         public void agregar(Articulo articulo)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
