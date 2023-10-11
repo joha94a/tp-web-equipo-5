@@ -20,35 +20,51 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
-                        </li>
-                    </ul>
-
-                    <form class="d-flex" role="search">
-                        <%--<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">--%>
-                        <asp:TextBox ID="txtBuscar" class="form-control me-2" runat="server" placeholder="Buscar"></asp:TextBox>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-outline-success" OnClick="btnBuscar_Click" />
-                    </form>
-
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <div>
-                                <i class="bi bi-cart"></i>
-                                <asp:Button ID="btnCarrito" runat="server" Text="Carrito" CssClass="btn btn-primary position-relative" OnClick="btnCarrito_Click" />
-                                <span class="start-100 translate-middle badge rounded-pill bg-danger"><%: this.Carrito.CantidadItems().ToString() %>
-                                    <span class="visually-hidden">cantidad de articulos</span>
-                                </span>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-1">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
+                                    </li>
+                                </ul>
                             </div>
-                        </li>
-                        <%--<li class="nav-item">
+                            <div class="col-10">
+                                <ul class="navbar-nav me-auto w-100 mb-2 mb-lg-0">
+                                    <li class="nav-item w-100 me-2" >
+                                        <asp:TextBox ID="txtBuscar" class="form-control me-2 w-100" runat="server" placeholder="Buscar"></asp:TextBox>
+                                    </li>
+                                    <li class="nav-item">
+                                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-outline-success" OnClick="btnBuscar_Click" />
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-1">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <div>
+                                            <i class="bi bi-cart"></i>
+                                            <asp:Button ID="btnCarrito" runat="server" Text="Carrito" CssClass="btn btn-primary position-relative" OnClick="btnCarrito_Click" />
+                                            <span class="start-100 translate-middle badge rounded-pill bg-danger"><%: this.Carrito.CantidadItems().ToString() %>
+                                                <span class="visually-hidden">cantidad de articulos</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                            </div>
+
+
+
+
+
+                            <%--<li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Carrito.aspx">Carrito</a>
                         </li>
                         <li class="nav-item">
                             <asp:Label ID="lblCantidadItems" runat="server" Text="" CssClass="nav-link active"></asp:Label>
                         </li>--%>
-                    </ul>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
